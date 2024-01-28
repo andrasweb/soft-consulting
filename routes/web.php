@@ -13,6 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', [
+    'as' => 'home',
+    'uses' => '\App\Http\Controllers\HomeController@index'
+]);
+
+Route::post('/upload', [
+    'as' => 'upload',
+    'uses' => '\App\Http\Controllers\HomeController@uploadXml'
+]);
