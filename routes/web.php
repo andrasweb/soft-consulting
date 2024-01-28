@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
 Route::get('/', [
     'as' => 'home',
     'uses' => '\App\Http\Controllers\HomeController@index'
@@ -25,4 +21,14 @@ Route::get('/', [
 Route::post('/upload', [
     'as' => 'upload',
     'uses' => '\App\Http\Controllers\HomeController@uploadXml'
+]);
+
+Route::get('/persons', [
+    'as' => 'persons',
+    'uses' => '\App\Http\Controllers\HomeController@showPersons'
+]);
+
+Route::get('/logs', [
+    'as' => 'logs',
+    'uses' => '\App\Http\Controllers\HomeController@showLogs'
 ]);

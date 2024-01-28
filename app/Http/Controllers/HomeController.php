@@ -48,4 +48,18 @@ class HomeController extends Controller
 
         return redirect('/');
     }
+
+    public function showPersons()
+    {
+        $persons = (new PersonServices())->getPersons();
+
+        return view('persons')->with(compact('persons'));
+    }
+
+    public function showLogs()
+    {
+        $logs = (new LogServices())->getLogs();
+
+        return view('logs')->with(compact('logs'));
+    }
 }

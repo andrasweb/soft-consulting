@@ -3,7 +3,19 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            XML feltöltés
+            <button>
+                <a href="{{route('persons')}}">
+                    persons
+                </a>
+            </button>
+
+            <button>
+                <a href="{{route('logs')}}">
+                    logs
+                </a>
+            </button>
+
+            <h1>XML feltöltés</h1>
 
             <div class="col-md-10">
                 <div class="card">
@@ -16,7 +28,7 @@
 
                                 <div class="col-md-6">
                                     <input id="xml" type="file" class="form-control{{ $errors->has('xml') ? ' is-invalid' : '' }}" name="xml">
-                                    @if ($errors->has('xml'))
+                                    @if($errors->has('xml'))
                                         <span class="invalid-feedback">
                                             <strong>{{ $errors->first('xml') }}</strong>
                                         </span>

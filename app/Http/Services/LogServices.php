@@ -13,4 +13,9 @@ class LogServices
         $log->statusz = $status;
         $log->save();
     }
+
+    public function getLogs()
+    {
+        return (new Log())->get();
+    }
 }

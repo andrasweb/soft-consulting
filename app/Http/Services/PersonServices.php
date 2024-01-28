@@ -64,4 +64,9 @@ class PersonServices
             ->pluck('azonosito')
             ->toArray();
     }
+
+    public function getPersons()
+    {
+        return (new Person())->get();
+    }
 }
