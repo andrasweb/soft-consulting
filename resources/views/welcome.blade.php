@@ -34,6 +34,40 @@
                                 </div>
                             </div>
                         </form>
+
+                        @if(session()->has('results'))
+                            <h1>feltöltés eredménye:</h1>
+
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ADOAZONOSITOJEL</th>
+                                        <th>TELJESNEV</th>
+                                        <th>AZONOSITO</th>
+                                        <th>EGYEBID</th>
+                                        <th>BELEPES</th>
+                                        <th>KILEPES</th>
+                                        <th>EMAILCIM</th>
+                                        <th>STATUSZ</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    @foreach(session()->get('results') as $result)
+                                        <tr>
+                                            <td>{{$result['ADOAZONOSITOJEL']}}</td>
+                                            <td>{{$result['TELJESNEV']}}</td>
+                                            <td>{{$result['AZONOSITO']}}</td>
+                                            <td>{{$result['EGYEBID']}}</td>
+                                            <td>{{$result['BELEPES']}}</td>
+                                            <td>{{$result['KILEPES']}}</td>
+                                            <td>{{$result['EMAILCIM']}}</td>
+                                            <td>{{$result['STATUSZ']}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        @endif
                     </div>
                 </div>
             </div>

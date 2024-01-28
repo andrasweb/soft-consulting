@@ -42,7 +42,9 @@ class HomeController extends Controller
                 ->withInput();
         }
 
-        (new PersonServices())->savePersonsDataFromXml($request);
+        $results = (new PersonServices())->savePersonsDataFromXml($request);
+
+        session()->flash('results', $results);
 
         return redirect('/');
     }

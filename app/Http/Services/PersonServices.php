@@ -12,6 +12,7 @@ class PersonServices
         $xmlString = file_get_contents($request->file('xml'));
         $xml = new \SimpleXMLElement($xmlString);
         $savedPersonIds = $this->getSavedPersonIds();
+        $results = [];
 
         foreach($xml as $item){
             $status = 'sikertelen';
@@ -23,7 +24,20 @@ class PersonServices
 
             $savedPersonIds[] = $item->AZONOSITO;
             $this->saveNewLog($item, $status);
+
+            $results[] = [
+                'ADOAZONOSITOJEL' => (string)$item->ADOAZONOSITOJEL,
+                'TELJESNEV' => (string)$item->TELJESNEV,
+                'AZONOSITO' => (string)$item->AZONOSITO,
+                'EGYEBID' => (string)$item->EGYEBID,
+                'BELEPES' => (string)$item->BELEPES,
+                'KILEPES' => (string)$item->KILEPES,
+                'EMAILCIM' => (string)$item->EMAILCIM,
+                'STATUSZ' => $status
+            ];
         }
+
+        return $results;
     }
 
     public function saveNewPerson($person)
