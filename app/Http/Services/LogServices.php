@@ -3,9 +3,14 @@ namespace App\Http\Services;
 
 use App\Models\Log;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class LogServices
 {
-    //
+    public function saveNewLog($person, $status)
+    {
+        $log = (new Log());
+        $log->azonosito = $person->AZONOSITO;
+        $log->statusz = $status;
+        $log->save();
+    }
 }
